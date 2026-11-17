@@ -1,0 +1,110 @@
+{
+  "source": "https://www.figma.com/design/WN3vFashMycheSXCbKpqfy/HSRY-Products---Align?node-id=205203-46508",
+  "assets": [
+    {
+      "name": "imgStyleOriginal",
+      "path": "public/figma-overview/c1efe.svg"
+    },
+    {
+      "name": "imgImage",
+      "path": "public/figma-overview/b8b74.png"
+    },
+    {
+      "name": "imgSchoolLine",
+      "path": "public/figma-overview/9dce9.svg"
+    },
+    {
+      "name": "imgArrowDownSLine",
+      "path": "public/figma-overview/f7dbb.svg"
+    },
+    {
+      "name": "imgLayoutGridLine",
+      "path": "public/figma-overview/14722.svg"
+    },
+    {
+      "name": "imgArrowRightSLine",
+      "path": "public/figma-overview/76fb8.svg"
+    },
+    {
+      "name": "imgSchoolLine1",
+      "path": "public/figma-overview/b3d2b.svg"
+    },
+    {
+      "name": "imgBox3Line",
+      "path": "public/figma-overview/10395.svg"
+    },
+    {
+      "name": "imgToolsLine",
+      "path": "public/figma-overview/e5518.svg"
+    },
+    {
+      "name": "imgStackLine",
+      "path": "public/figma-overview/83f35.svg"
+    },
+    {
+      "name": "imgSettings3Line",
+      "path": "public/figma-overview/01c46.svg"
+    },
+    {
+      "name": "imgFileCopy2Line",
+      "path": "public/figma-overview/7398f.svg"
+    },
+    {
+      "name": "imgHeadphoneLine",
+      "path": "public/figma-overview/c938e.svg"
+    },
+    {
+      "name": "imgVerifiedFill",
+      "path": "public/figma-overview/c2dea.svg"
+    },
+    {
+      "name": "imgArrowRightSLine1",
+      "path": "public/figma-overview/0cc3e.svg"
+    },
+    {
+      "name": "imgSearch2Line",
+      "path": "public/figma-overview/d2ad1.svg"
+    },
+    {
+      "name": "imgTopbarItemButtonTopbar10",
+      "path": "public/figma-overview/f1295.svg"
+    },
+    {
+      "name": "imgTopbarItemButtonTopbar11",
+      "path": "public/figma-overview/48bc8.svg"
+    },
+    {
+      "name": "imgCalendarTodoLine",
+      "path": "public/figma-overview/fd628.svg"
+    },
+    {
+      "name": "imgBox3Line1",
+      "path": "public/figma-overview/ccbaf.svg"
+    },
+    {
+      "name": "imgSchoolLine2",
+      "path": "public/figma-overview/b785d.svg"
+    },
+    {
+      "name": "imgToolsLine1",
+      "path": "public/figma-overview/41cef.svg"
+    },
+    {
+      "name": "imgSettings2Line",
+      "path": "public/figma-overview/9812d.svg"
+    },
+    {
+      "name": "imgFileCopy2Line1",
+      "path": "public/figma-overview/b059e.svg"
+    },
+    {
+      "name": "imgArrowRightSLine2",
+      "path": "public/figma-overview/58ced.svg"
+    },
+    {
+      "name": "assetChevron",
+      "path": "public/figma-overview/3c7bc.svg"
+    }
+  ],
+  "revisedSource": "https://www.figma.com/design/WN3vFashMycheSXCbKpqfy/HSRY-Products---Align?node-id=205207-9465"
+}

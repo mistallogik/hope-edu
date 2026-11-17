@@ -1,0 +1,101 @@
+/* Shared Align foundation for all six modules and workflow dialogs. */
+:root { --green:var(--align-primary-dark); --green-dark:#137843; --green-soft:var(--align-success-light); --ink:var(--align-text-strong); --text:var(--align-text-sub); --muted:#858585; --line:var(--align-stroke-soft); --canvas:#fff; --amber:#b94c08; --red:var(--align-critical); --radius:16px; }
+body,dialog { font:400 14px/20px Geist,Inter,sans-serif; letter-spacing:-.006em; color:var(--ink); }
+h1,h2,h3 { font-family:Geist,Inter,sans-serif; letter-spacing:-.015em; }
+h1 { font-size:24px; line-height:32px; font-weight:600; } h2 { font-size:16px; line-height:24px; } h3 { font-size:14px; line-height:20px; } p { line-height:1.5; }
+button,select { border-radius:8px; box-shadow:var(--align-shadow-xs); font-size:14px; line-height:20px; }
+button:hover { background:var(--align-bg-weak); }
+button:disabled { opacity:.4; }
+.primary { font:500 14px/20px Geist,sans-serif; padding:8px 12px; border-radius:8px; }
+.small-btn { font:500 12px/16px Geist,sans-serif; padding:7px 10px; border-color:var(--line); }
+.text-link,.back-link,.text-btn { font-size:12px; line-height:18px; }
+.text-link { color:var(--green); }
+.icon-btn,.text-btn,.ds-top-icon,.ds-mobile-menu,.ds-nav-item,.ds-profile { box-shadow:none; }
+.panel { border-color:var(--line); border-radius:16px; box-shadow:var(--align-shadow-xs); margin-bottom:24px; }
+.panel-head { padding:16px 20px; min-height:60px; border-color:var(--line); }
+.panel-head h2 { font:500 16px/24px Geist,sans-serif; }
+.content { padding:24px; }
+.eyebrow,.stat-label { font:500 12px/16px 'DM Mono',monospace; color:var(--muted); text-transform:uppercase; letter-spacing:0; }
+.stats { border:0; padding:0; background:transparent; gap:20px; }
+.stat { border:1px solid var(--line)!important; border-radius:16px; padding:20px; background:#fff; min-height:144px; box-shadow:var(--align-shadow-xs); }
+.stat-value { font:500 32px/40px 'Sharp Grotesk',sans-serif; letter-spacing:-.005em; }
+.stat-foot { font:400 12px/18px Geist,sans-serif; }
+.small-value { font:500 20px/28px Geist,sans-serif; }
+.tiny-ring { display:none; }
+.badge { border:0; border-radius:999px; font:500 12px/16px Geist,sans-serif; padding:2px 8px; }
+.badge>span { display:none; }
+.badge.green { color:#178c4e; background:var(--align-success-light); }
+.badge.amber { color:#b94c08; background:#fff3eb; }
+.badge.red { color:var(--align-critical); background:var(--align-critical-light); }
+.badge.neutral { color:var(--text); background:var(--align-bg-weak); }
+.count { font-size:12px; background:var(--align-bg-weak); }
+.toolbar { gap:16px; align-items:center; margin-bottom:20px; }
+.search-box { border-radius:8px; box-shadow:var(--align-shadow-xs); min-height:40px; width:360px; }
+.search-box input { font:400 14px/20px Geist,sans-serif; padding:9px 0; }
+.filter-group { align-items:center; flex-wrap:wrap; }.filter-group button { font-size:14px; }
+select { min-height:36px; font-size:14px; }
+.record-banner { gap:16px; margin:24px 0; }.record-banner h1,.record-banner h2 { font:600 24px/32px Geist,sans-serif; }
+.record-banner p:not(.eyebrow) { font:400 14px/20px Geist,sans-serif; }
+.record-emblem { width:48px; height:48px; border-radius:12px; background:var(--align-bg-weak); border-color:var(--line); }
+.record-emblem .icon { width:24px; height:24px; }
+.two-col,.detail-grid,.course-grid { gap:24px; }
+.detail-grid { grid-template-columns:minmax(0,1fr) 320px; }
+.stepper { border-radius:12px; padding:20px 16px; border-color:var(--line); gap:8px; }
+.step { padding:0 4px; gap:8px; }.step>span { width:28px; height:28px; font-size:12px; }.step small { font:400 12px/16px Geist,sans-serif; }
+.step.done>span { background:var(--green-soft); border-color:var(--green-soft); }.step.current>span { background:var(--green); border-color:var(--green); }
+dl { font-size:14px; line-height:20px; gap:16px; }
+.record-fields { padding-top:20px; gap:20px; }.record-fields small { font-size:12px; }.record-fields p { font-size:14px; }
+.detail-aside p { font-size:14px; }.detail-aside h3 { font-size:18px; line-height:26px; }
+.timeline { padding:24px; }.timeline li { font-size:14px; padding-left:24px; padding-bottom:24px; }.timeline p { font-size:12px; line-height:18px; }.timeline-dot { background:var(--green); }
+.file-row { padding:16px 0; }.file-row strong { font-size:14px; }.file-row small { font-size:12px; }
+.demo-note { border-radius:12px; border-color:var(--line); background:var(--align-bg-weak); }.demo-note strong,.demo-note p { font-size:12px; }
+.notice { background:var(--align-bg-weak); border-color:var(--line); color:var(--text); font-size:13px; border-radius:8px; padding:12px 16px; }
+.offline-bar { background:#fff3eb; border-color:#ffd9c0; color:#b94c08; font-size:12px; border-radius:8px; }
+.course h2 { font:500 18px/26px Geist,sans-serif; }.course p:not(.eyebrow) { font-size:14px; }.course-art { border-bottom:1px solid var(--line); }
+.hub-hero { border-radius:16px; background:var(--green-soft); border-color:var(--line); padding:32px; }.hub-hero h2 { font:600 32px/40px Geist,sans-serif; }.hub-hero p:not(.eyebrow) { color:var(--text); }
+.hub-number { color:#a6e4c1; }.hub-number span { font:500 14px/20px Geist,sans-serif; color:var(--green); }
+.tier h2 { font:500 28px/36px 'Sharp Grotesk',sans-serif; }.tier p,.tier ul { font-size:14px; }.tier-price small { font:400 12px/18px Geist,sans-serif; }.tier.featured { border-color:var(--green); }
+.scorecard p,.grant p { font-size:14px; }.milestones span { font-size:12px; }.score-value { font:500 40px/48px 'Sharp Grotesk',sans-serif; }
+.progress { background:var(--align-bg-weak); height:6px; }.progress span { background:var(--align-primary); }
+.empty { font-size:14px; }.bottom-note,footer { font-size:12px; color:var(--muted); }
+dialog { border-radius:16px; padding:32px; border-color:var(--line); box-shadow:0 16px 64px #17171724; }
+dialog h2 { font:600 22px/30px Geist,sans-serif; padding-right:16px; }dialog::backdrop { background:#17171766; }
+.field { font-size:14px; gap:8px; }.field input,.field textarea,.field select { font:400 14px/20px Geist,sans-serif; border-color:var(--line); border-radius:8px; padding:10px 12px; }
+.check-field { font-size:14px; }.upload-zone { background:var(--align-bg-weak); border-color:#d1d1d1; border-radius:12px; }.upload-zone>strong { font-size:14px; }.upload-zone p,.upload-zone input { font-size:12px; }
+.setting-row strong { font-size:14px; }.setting-row p { font-size:12px; }.journey-list strong { font-size:14px; }.journey-list small { font-size:12px; }.journey-list>a>span:last-child { font-size:12px; }
+.lesson { font-size:14px; }.form-error { color:var(--red); }.danger-btn { color:var(--red); border-color:#ffc0c5; font-size:14px; }
+#toast { font:400 14px/20px Geist,sans-serif; background:var(--ink); border-radius:8px; }
+/* Bring the other overview modules into the approved panel structure. */
+.align-shell:not(.school-overview-v2) .ds-overview-split { gap:20px; align-items:stretch; }
+.align-shell:not(.school-overview-v2) .ds-map-panel { border:1px solid var(--line); border-radius:12px; padding:16px; }
+.align-shell:not(.school-overview-v2) .ds-map-toolbar { padding:0 0 16px; }
+.align-shell:not(.school-overview-v2) .ds-priorities { border:1px solid var(--line); border-radius:12px; padding:16px; }
+.align-shell:not(.school-overview-v2) .ds-priority-heading h2 { font:600 14px/20px Geist,sans-serif; }
+.align-shell:not(.school-overview-v2) .ds-priority-heading p { font-size:12px; }
+.align-shell:not(.school-overview-v2) .ds-priority-card { padding:12px; margin-bottom:12px; border-radius:12px; }
+.align-shell:not(.school-overview-v2) .ds-priority-card h3 { font:500 16px/22px Geist,sans-serif; }
+.align-shell:not(.school-overview-v2) .ds-priority-card-head p,.align-shell:not(.school-overview-v2) .ds-priority-card dl { font:400 12px/18px Geist,sans-serif; }
+.align-shell:not(.school-overview-v2) .ds-priority-card dl { grid-template-columns:78px 1fr; gap:6px; }
+.align-shell:not(.school-overview-v2) .ds-location-chip,.align-shell:not(.school-overview-v2) .ds-priority-card-foot>.ds-link { font-size:12px; }
+.align-shell:not(.school-overview-v2) .ds-status { font:500 12px/16px Geist,sans-serif; }
+@media(max-width:1100px) { .detail-grid { grid-template-columns:1fr; }.detail-aside { position:static; }.stepper { overflow-x:auto; }.step { min-width:120px; }.stats { grid-template-columns:repeat(2,minmax(0,1fr)); } }
+@media(max-width:760px) { .content { padding:16px; }.panel-head { padding:16px; flex-wrap:wrap; }.toolbar { flex-wrap:wrap; }.search-box { width:100%; }.filter-group { width:100%; }.two-col,.course-grid { grid-template-columns:1fr; }.record-banner h1,.record-banner h2 { font-size:22px; }.record-banner>div:nth-child(2) { min-width:0; }.stats { gap:12px; }.stat { padding:16px; }.stat-label { font-size:11px; }.small-value { font-size:18px; }.stepper { padding:16px 12px; }.step small { font-size:12px; }.record-fields { grid-template-columns:1fr; }dl { grid-template-columns:110px minmax(0,1fr); }dd { overflow-wrap:anywhere; }.hub-hero { padding:24px; }.hub-hero h2 { font-size:28px; line-height:36px; }dialog { padding:28px 20px; }.field input,.field textarea,.field select { font-size:16px; }.dialog-actions { flex-wrap:wrap; }.journey-list>a { flex-wrap:wrap; }footer { flex-direction:column; gap:8px; } }
+/* Size overview maps from their width so the SVG does not letterbox inside a fixed-height stage. */
+.align-shell .ds-map-panel:not(.expanded) .ds-map-stage {
+  width: 100%;
+  height: auto;
+  min-height: 0;
+  aspect-ratio: 760 / 580;
+  flex: none;
+}
+.align-shell .ds-map-panel:not(.expanded) .readiness-map-svg {
+  width: 100%;
+  height: auto;
+}
+
+/* The profile card doubles as an accessible native user-type selector. */
+.ds-role-switch { position:relative; cursor:pointer; }
+.ds-role-switch:hover { background:var(--align-bg-weak); }
+.ds-role-switch:focus-within { outline:3px solid #83d5a7; outline-offset:3px; }
+.ds-role-switch select { position:absolute; inset:0; width:100%; height:100%; opacity:0; cursor:pointer; margin:0; }
+.ds-role-arrows { display:block; flex:none; }

@@ -1,0 +1,69 @@
+/* Overview frame 205207:9465. Scope prevents changes to other pages. */
+.school-overview-v2 { --ov-border: #d1d1d1; --ov-radius: 12px; font-feature-settings: 'ss11' 1, 'calt' 0, 'liga' 0; }
+.school-overview-v2 .ds-main { padding: 24px 20px 0; }
+.school-overview-v2 .ds-overview-split { grid-template-columns: minmax(0,683fr) minmax(340px,423fr); gap: 20px; align-items: stretch; margin-bottom: 20px; }
+.school-overview-v2 .ds-map-panel, .school-overview-v2 .ov-attention { padding: 16px; border: 1px solid var(--ov-border); border-radius: var(--ov-radius); box-shadow: var(--align-shadow-xs); background: var(--align-bg-white); min-width: 0; }
+.school-overview-v2 .ds-map-panel { display: flex; flex-direction: column; }
+.school-overview-v2 .ds-map-toolbar, .school-overview-v2 .ov-panel-heading { display: flex; align-items: center; justify-content: space-between; gap: 12px; min-height: 28px; padding: 0; margin-bottom: 16px; border: 0; }
+.school-overview-v2 .ds-map-toolbar h2, .school-overview-v2 .ov-panel-heading h2 { font: 600 14px/20px Geist,sans-serif; color: var(--align-text-strong); letter-spacing: -.015em; }
+.school-overview-v2 .ds-button-small { min-height: 28px; padding: 5px 8px; font: 500 12px/16px Geist,sans-serif; }
+.school-overview-v2 .ds-map-stage { height: 400px; min-height: 0; flex: none; border-top: 1px solid var(--align-stroke-soft); background: var(--align-bg-weak); }
+.school-overview-v2 .ds-map-foot { flex-direction: row; flex-wrap: wrap; gap: 4px 10px; padding: 6px 0 0; border: 0; font-size: 10px; }
+.school-overview-v2 .ds-map-foot small { font-size: 10px; }
+.school-overview-v2 .ds-map-caption { font-size: 10px; }
+.school-overview-v2 .ov-attention-list { display: flex; flex-direction: column; gap: 16px; }
+.school-overview-v2 .ov-attention-card { padding: 12px; border: 1px solid var(--ov-border); border-radius: var(--ov-radius); box-shadow: var(--align-shadow-xs); }
+.school-overview-v2 .ov-asset-head { display: flex; align-items: center; gap: 10px; padding-bottom: 10px; border-bottom: 1px solid var(--align-stroke-soft); }
+.school-overview-v2 .ov-asset-placeholder { display: flex; align-items: center; justify-content: center; width: 40px; height: 40px; flex: none; border-radius: 4px; background: var(--align-bg-weak); }
+.school-overview-v2 .ov-asset-copy { flex: 1; min-width: 0; }
+.school-overview-v2 .ov-asset-title { display: flex; align-items: flex-start; justify-content: space-between; gap: 8px; }
+.school-overview-v2 .ov-asset-title h3 { font: 500 16px/20px Geist,sans-serif; letter-spacing: -.011em; overflow-wrap: anywhere; }
+.school-overview-v2 .ov-asset-meta { display: flex; justify-content: space-between; gap: 8px; margin-top: 4px; color: var(--align-text-sub); font: 400 12px/16px Geist,sans-serif; }
+.school-overview-v2 .ov-asset-meta p { min-width: 0; }
+.school-overview-v2 .ov-asset-meta > span { white-space: nowrap; }
+.school-overview-v2 .ov-asset-footer { display: flex; align-items: center; justify-content: space-between; gap: 8px; padding-top: 10px; font: 500 12px/16px Geist,sans-serif; }
+.school-overview-v2 .ov-asset-footer > div > span { color: var(--align-text-sub); font-weight: 400; }
+.school-overview-v2 .ov-asset-footer p { margin-top: 2px; }
+.school-overview-v2 .ov-asset-link { display: inline-flex; align-items: center; gap: 4px; color: #1a7544; padding: 4px 0 4px 4px; white-space: nowrap; }
+.school-overview-v2 .ov-asset-link:hover { text-decoration: underline; }
+.school-overview-v2 .ov-badge { display: inline-flex; align-items: center; padding: 2px 8px; border-radius: 999px; font: 500 12px/16px Geist,sans-serif; white-space: nowrap; }
+.school-overview-v2 .ov-asset-title .ov-badge { border-radius: 6px; font-size: 10px; padding: 1px 6px; }
+.school-overview-v2 .ov-badge.critical { color: var(--align-critical); background: var(--align-critical-light); }
+.school-overview-v2 .ov-badge.warning { color: #b94c08; background: #fff3eb; }
+.school-overview-v2 .ov-badge.normal { color: #178c4e; background: var(--align-success-light); }
+.school-overview-v2 .ov-badge.stage { color: var(--align-text-sub); background: var(--align-bg-weak); }
+.school-overview-v2 .ov-next-steps { padding: 16px; border: 1px solid var(--align-stroke-soft); border-radius: 16px; box-shadow: var(--align-shadow-xs); margin: 0; }
+.school-overview-v2 .ov-next-steps .ov-panel-heading h2 { font: 500 16px/24px Geist,sans-serif; color: var(--align-text-secondary); }
+.school-overview-v2 .ov-table-scroll { overflow-x: auto; }
+.school-overview-v2 .ov-next-steps table { width: 100%; border-collapse: collapse; table-layout: fixed; }
+.school-overview-v2 .ov-next-steps th { padding: 4px 8px; background: var(--align-bg-weak); color: var(--align-text-soft); font: 500 14px/20px 'DM Mono',monospace; text-transform: uppercase; letter-spacing: 0; text-align: left; border: 0; }
+.school-overview-v2 .ov-next-steps th:first-child { border-radius: 8px 0 0 8px; }
+.school-overview-v2 .ov-next-steps th:last-child { border-radius: 0 8px 8px 0; }
+.school-overview-v2 .ov-next-steps th:first-child { width: 27%; }
+.school-overview-v2 .ov-next-steps th:nth-child(2) { width: 15%; }
+.school-overview-v2 .ov-next-steps th:nth-child(3) { width: 25%; }
+.school-overview-v2 .ov-next-steps th:nth-child(4) { width: 17%; }
+.school-overview-v2 .ov-next-steps th:last-child { width: 16%; }
+.school-overview-v2 .ov-next-steps td { padding: 18px 8px; min-width: 0; border-bottom: 1px solid var(--align-stroke-soft); font: 400 12px/18px Geist,sans-serif; color: var(--align-text-sub); white-space: normal; }
+.school-overview-v2 .ov-next-steps tbody tr:last-child td { border-bottom: 0; }
+.school-overview-v2 .ov-next-steps td strong { display: block; font: 500 16px/24px Geist,sans-serif; color: var(--align-text-secondary); }
+.school-overview-v2 .ov-next-steps td small { display: block; margin-top: 2px; color: var(--align-text-sub); font: 400 11px/16px Geist,sans-serif; }
+.school-overview-v2 .ov-open { min-width: 88px; }
+.school-overview-v2 .ov-empty { padding: 24px 8px; color: var(--align-text-sub); font: 400 14px/20px Geist,sans-serif; }
+.school-overview-v2 .ds-map-panel.expanded .ds-map-stage { height: auto; }
+@media(max-width:1150px) {
+  .school-overview-v2 .ds-overview-split { grid-template-columns: 1fr; }
+  .school-overview-v2 .ov-attention-list { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); }
+  .school-overview-v2 .ds-map-stage { flex: auto; height: 400px; }
+  .school-overview-v2 .ov-next-steps table { min-width: 720px; }
+}
+@media(max-width:760px) {
+  .school-overview-v2 .ds-main { padding: 20px 16px 0; }
+  .school-overview-v2 .ds-map-panel, .school-overview-v2 .ov-attention { padding: 12px; }
+  .school-overview-v2 .ds-map-toolbar { align-items: flex-start; }
+  .school-overview-v2 .ds-map-toolbar h2 { max-width: 165px; }
+  .school-overview-v2 .ds-map-stage { height: 300px; min-height: 300px; }
+  .school-overview-v2 .ov-attention-list { display: flex; }
+  .school-overview-v2 .ov-next-steps { padding: 12px; }
+  .school-overview-v2 .ds-map-foot { font-size: 9px; }
+}
