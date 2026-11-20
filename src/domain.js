@@ -1,3 +1,4 @@
+import {isTechnician,requireJob,activeUser,canAct,requireRecord} from './access.js';
 export const TODAY='2026-11-16';
 export const modules={
  program:{name:'Program Intelligence',short:'Program intelligence',icon:'dashboard',provider:'Software by Hsry',description:'A clearer picture. A stronger education system.',views:['Overview','State scorecards','DLR readiness','Actions'],journey:'DLR-07'},
@@ -7,7 +8,7 @@ export const modules={
  essence:{name:'Essence Teacher Centre',short:'Essence teacher centre',icon:'hat_graduation',provider:'Learning delivery by Essence · Software by Hsry',description:'From professional learning to classroom practice.',views:['Overview','Training hub','Cohorts & schedule','Practicum','Completion & follow-up'],journey:'COH-001'},
  community:{name:'Open Classroom',short:'Community learning',icon:'people_community',provider:'Learning by The Open Classroom · Software by Hsry',description:'More pathways into learning. More possibilities ahead.',views:['Overview','Community centres','Referral & enrollment','Attendance & materials','Progress & transition'],journey:'REF-001'}
 };
-export const roles=['National coordinator','State manager','School focal person','Technician','Evidence verifier','Teacher','Mentor','Auroch manager','Essence coordinator','Community facilitator','Community reviewer'];
+export const roles=['National coordinator','State manager','Facility manager','Technician','Evidence verifier','Teacher','Mentor','Auroch manager','Essence coordinator','Community facilitator','Community reviewer'];
 const field=(key,label,type='text',options)=>({key,label,type,options});
 export const flows={
  program:{stages:['Reporting gap','Action assigned','Evidence submitted','Validated'],steps:[{label:'Assign corrective action',role:'State manager',fields:[field('assignee','Responsible unit'),field('due','Deadline','date'),field('action','Corrective action','textarea')]},{label:'Submit evidence',role:'State manager',evidence:true,fields:[field('result','Result and supporting explanation','textarea')]},{label:'Validate submission',role:'Evidence verifier',review:true,fields:[field('decision','Verification notes','textarea')]}]},
@@ -17,6 +18,20 @@ export const flows={
  essence:{stages:['Enrollment open','Cohort enrolled','Attendance recorded','Practicum submitted','Completed'],steps:[{label:'Enroll cohort',role:'Essence coordinator',fields:[field('prerequisites','Prerequisites checked','checkbox'),field('schedule','Start date','date')]},{label:'Record attendance',role:'Mentor',fields:[field('attendance','Sessions attended (of 5)','number'),field('notes','Attendance notes','textarea')]},{label:'Submit practicum',role:'Mentor',fields:[field('planning','Planning rubric','select',['Developing','Effective','Strong']),field('feedback','Practicum feedback','textarea'),field('passed','Sample practicum requirements met','checkbox')]},{label:'Confirm completion',role:'Essence coordinator',review:true,fields:[field('due','Follow-up date','date'),field('action','Follow-up plan','textarea')]}]},
  community:{stages:['Referral received','Enrolled','Delivery recorded','Progression submitted','Transition validated'],steps:[{label:'Review & enroll',role:'Community facilitator',fields:[field('cohort','Learning cohort','select',['Foundational literacy A','Numeracy bridge B']),field('support','Support needs','select',['None recorded','Learning materials','Accessible venue','Schedule adjustment']),field('reviewed','Referral reviewed','checkbox')]},{label:'Record learning delivery',role:'Community facilitator',fields:[field('attendance','Sessions attended (of 5)','number'),field('materials','Approved sample materials delivered','checkbox'),field('notes','Session notes','textarea')]},{label:'Submit progression evidence',role:'Community facilitator',evidence:true,fields:[field('progress','Progress against sample criteria','textarea'),field('destination','Proposed transition destination')]},{label:'Validate transition',role:'Community reviewer',review:true,fields:[field('verified','Transition evidence reviewed','checkbox'),field('decision','Transition decision notes','textarea')]}]}
 };
+
+export const roleFlows=structuredClone(flows);
+roleFlows.program.steps[2].role='State manager';
+roleFlows.schools.steps[0].fields[0]=field('assignee','Assigned technician','select',['Ibrahim Suleiman']);
+roleFlows.schools.steps[4].role='Facility manager';
+roleFlows.teachers.steps.slice(1).forEach(s=>s.role='Teacher');
+roleFlows.energy.steps.forEach((s,i)=>s.role=['Technician','State manager','Technician','Facility manager'][i]);
+roleFlows.energy.steps[3].fields=[field('verified','Facility acceptance confirmed','checkbox'),field('decision','Acceptance notes','textarea')];
+roleFlows.energy.steps.push({label:'Validate commissioning',role:'State manager',review:true,fields:[field('verified','Commissioning evidence validated','checkbox'),field('decision','Validation notes','textarea')]});
+roleFlows.energy.stages=['Audit required','Audit recorded','Option selected','Installation complete','Facility accepted','Operational'];
+roleFlows.essence.steps.forEach((s,i)=>s.role=['State manager','Teacher','Teacher','State manager'][i]);
+roleFlows.community.steps.forEach((s,i)=>s.role=i===3?'State manager':'Teacher');
+export const workflowFor=r=>r.roleVersion?roleFlows[r.module]:flows[r.module];
+
 export function seed(){
  const states=['Kaduna','Kano','Oyo'],lgas={Kaduna:['Chikun','Zaria'],Kano:['Gwale','Nassarawa'],Oyo:['Ibadan North','Akinyele']};
  const schools=Array.from({length:12},(_,i)=>({id:`SCH-${String(i+1).padStart(3,'0')}`,name:`${['Unity','Horizon','Oakfield','Riverside'][i%4]} Demonstration School`,state:states[Math.floor(i/4)],lga:lgas[states[Math.floor(i/4)]][i%2],students:120+i*23,facilities:{ICT:i%3?'Available':'Needs attention',WASH:i%4?'Operational':'Degraded',Connectivity:i%2?'Intermittent':'Available',Energy:i===0?'Failed':'Operational'},condition:i===0?'Failed':i%4===0?'Degraded':'Operational'}));
@@ -35,15 +50,17 @@ export function seed(){
  records.filter(r=>r.module==='schools').forEach(r=>r.state=assets.find(a=>a.id===r.assetId).state);
  return {schema:1,schools,assets,teachers,records,grants:[{id:'GRT-001',schoolId:'SCH-001',title:'Classroom roof maintenance',amount:420000,status:'Approval pending',milestones:['Survey complete','Procurement pending','Handover pending']}],queue:[],settings:{role:roles[0],offline:false},updatedAt:null};
 }
-export function stageName(r){return flows[r.module].stages[r.stage]}
-export function complete(r){return r.stage===flows[r.module].stages.length-1}
+export function stageName(r){return workflowFor(r).stages[r.stage]}
+export function complete(r){return r.stage===workflowFor(r).stages.length-1}
 export function severity(r,state){if(complete(r))return 'Normal';const asset=state?.assets.find(a=>a.id===r.assetId);if(asset?.condition==='Failed')return 'Critical';if((r.due||r.fields.due||'9999')<TODAY)return 'Critical';return asset?.condition==='Degraded'||r.stage===0?'Warning':'Normal'}
 export function transition(state,id,actor,fields,{evidence=[],expectedVersion,returnReason}={}){
+ if(!state.roleVersion&&isTechnician(state)&&state.technicianVersion){requireJob(state,id,true);if(actor!=='Technician')throw Error('Role changes are not allowed within a work order.');}
+ if(state.roleVersion){requireRecord(state,id,true);if(actor!==activeUser(state).role)throw Error('Use the assigned demo identity.');}
  const next=structuredClone(state),r=next.records.find(r=>r.id===id);if(!r)throw Error('Record not found.');
  if(expectedVersion!==undefined&&r.version!==expectedVersion)throw Error('This record changed. Reload it before submitting.');
- const step=flows[r.module].steps[r.stage];if(!step)throw Error('This journey is already complete.');
+ const step=workflowFor(r).steps[r.stage];if(!step)throw Error('This journey is already complete.');
  if(actor!==step.role)throw Error(`This action requires the ${step.role} role.`);
- if(step.review&&r.submittedBy===actor)throw Error('A different role must review this submission.');
+ if(!state.roleVersion&&step.review&&r.submittedBy===actor)throw Error('A different role must review this submission.');
  if(returnReason){if(!step.review||!returnReason.trim())throw Error('A review reason is required.');r.stage=((r.module==='essence'&&Number(r.fields.attendance)<4)||(r.module==='community'&&Number(r.fields.attendance)<3))?1:Math.max(0,r.stage-1);r.audit.push({label:`Returned for correction: ${returnReason}`,actor,at:new Date().toISOString()});r.version++;if(next.settings.offline)next.queue.push({id:`${id}:${r.version}`,recordId:id,label:'Returned for correction',status:'Pending',version:r.version});return next;}
  for(const f of step.fields){const value=fields[f.key];if(f.type==='checkbox'?!value:!String(value??'').trim())throw Error(`${f.label} is required.`);if(f.type==='number'&&(!Number.isFinite(Number(value))||Number(value)<0))throw Error(`${f.label} must be a positive number.`);if(f.type==='select'&&!f.options.includes(value))throw Error(`Choose a valid ${f.label.toLowerCase()}.`);}
  if(fields.attendance!==undefined&&(Number(fields.attendance)>5||Number(fields.attendance)<0))throw Error('Attendance must be between 0 and 5.');
@@ -51,7 +68,9 @@ export function transition(state,id,actor,fields,{evidence=[],expectedVersion,re
  if(step.evidence&&!evidence.length)throw Error('Add supporting evidence before submitting.');
  if(r.module==='essence'&&step.review&&Number(r.fields.attendance)<4)throw Error('At least 4 of 5 sessions are required by the demo completion rule. Return the record for correction.');
  if(r.module==='community'&&step.review&&Number(r.fields.attendance)<3)throw Error('At least 3 sessions are required by the sample progression rule.');
- r.fields={...r.fields,...fields};r.evidence.push(...evidence.map(e=>({...e,actor,stage:r.stage,at:new Date().toISOString()})));r.audit.push({label:step.label,actor,at:new Date().toISOString()});r.submittedBy=actor;r.stage++;r.version++;delete r.draft;
+ if(r.roleVersion&&r.module==='schools'&&r.stage===0)r.assigneeId='tech-001';
+ if(state.roleVersion)fields=Object.fromEntries(step.fields.map(f=>[f.key,fields[f.key]]));
+ r.fields={...r.fields,...fields};r.evidence.push(...evidence.map(e=>({...e,actor,stage:r.stage,at:new Date().toISOString()})));r.audit.push({label:step.label,actor,at:new Date().toISOString()});r.submittedBy=actor;if(state.roleVersion||isTechnician(state)&&state.technicianVersion){r.submittedById=activeUser(state).id;r.audit.at(-1).actorId=activeUser(state).id;r.audit.at(-1).actor=activeUser(state).name;}r.stage++;r.version++;delete r.draft;
  if(complete(r)&&r.module==='schools'){const a=next.assets.find(a=>a.id===r.assetId);a.condition='Operational';a.history.push({label:`Repair verified · ${r.id}`,at:new Date().toISOString()});const school=next.schools.find(s=>s.id===a.schoolId);school.condition=next.assets.some(a=>a.schoolId===school.id&&a.condition==='Failed')?'Failed':'Operational';school.facilities.Energy='Operational';}
  if(complete(r)&&r.module==='energy'){r.assetId=`AST-${r.id}`;next.assets.push({id:r.assetId,name:'Commissioned solar hybrid',schoolId:r.schoolId,state:r.state,condition:'Operational',warranty:'16 Nov 2028',history:[{label:`Commissioned through ${r.id}`,at:new Date().toISOString()}]});}
  if(r.teacherId){const t=next.teachers.find(t=>t.id===r.teacherId);if(t)t.history.push({label:`${r.id} · ${step.label}`,at:new Date().toISOString()});}

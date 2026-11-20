@@ -62,3 +62,9 @@ GitHub Actions runs syntax checks and all tests on Node.js 22 and 24 for pushes 
 ## Assets and licensing
 
 See [asset sources](public/ASSET-SOURCES.md) and bundled third-party license files. Sharp Grotesk is a user-supplied commercial font; its inclusion does not grant redistribution rights. This repository does not assign an open-source license to the application or design assets.
+
+## Technician V2 preview
+
+Choose **Technician** in the sidebar **Demo role** selector. The synthetic user Ibrahim Suleiman sees only assigned jobs, a role-specific overview, and personal settings. Open `TECH-001` to try diagnosis and quote submission, or `TECH-003` to submit repair evidence. Other jobs demonstrate approval, verification and closed states. Existing records remain intact; legacy unassigned jobs are not automatically granted to the technician.
+
+The top-right avatar opens Profile, Settings and Logout. The messaging icon opens a browser-local demonstration with saved outgoing messages, not live chat. All five role experiences are now available. Each role uses one sample person; there is no secondary person selector. State Manager and Facility Manager overviews include scoped asset-readiness maps. See [the V2 plan](docs/v2-build-plan.md) for the remaining scope.

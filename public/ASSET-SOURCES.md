@@ -11,3 +11,4 @@
 - `nigeria-region.json`: illustrative regional map geometry used by the overview; geographic provenance remains to be verified before production use.
 
 The supplied Sharp Grotesk font and Figma design assets are not covered by the open font or icon licenses listed above. Their presence in this project does not grant redistribution rights.
+- `icons/chat.svg`: Microsoft Fluent UI System Icons 1.1.341, Chat 24 Regular, selected through the Fluent Icons plugin; covered by `icons/LICENSE`.

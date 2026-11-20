@@ -29,3 +29,18 @@ Open REF-001. As Community facilitator, review the coded referral, select a coho
 ## Field behavior
 
 Use a narrow browser viewport to review the maintenance, mentoring, and outreach forms. Enable Offline simulation before submitting an action. The record saves locally and a queued-change indicator appears. Disable the simulator and sync. For a conflict demonstration, open the conflict control and retain the local version. This is an explicit simulation, not a live network synchronization service.
+
+## V2 role handoffs
+
+Use the sidebar Demo role selector. Each role has one sample person. Bala and Maryam remain assigned reviewers/mentors in the synthetic data but cannot be selected in the browser demo: steps assigned to them remain pending. The journeys below describe the full workflow; independent handoffs are verified by domain tests.
+
+State Managers see asset-readiness pins across their state. Facility Managers see their assigned facility. Select a pin to inspect readiness and open its permitted details; zoom and expand controls remain available.
+
+- **Program evidence:** Amina Yusuf (State Manager) opens `V2-DLR-001`, assigns the action and submits evidence. Bala Ahmed (State Manager) validates. Abdullahi Hassan (National Coordinator) sees the summary and assigned review detail.
+- **Maintenance:** Ibrahim Suleiman (Technician) opens `TECH-001` and submits diagnosis/quote. Amina approves. Ibrahim submits repair evidence. Musa Ibrahim (Facility Manager) verifies closure.
+- **Teacher development:** Zainab Bello (Teacher) completes training on `V2-OBS-001`. Maryam Ali (Teacher with mentoring duty) records observation and follow-up.
+- **Energy:** Ibrahim audits `V2-INS-001`; Amina approves the installation option; Ibrahim submits commissioning evidence; Musa accepts the facility; Bala validates commissioning. Only then is it operational.
+- **Training:** Amina enrolls `V2-COH-001`; Maryam records attendance and practicum; Bala confirms completion. Zainab sees her own enrollment and result.
+- **Community:** Zainab records enrollment, attendance and progression on `V2-REF-001`; Bala validates transition. Safeguarding case details are unavailable.
+
+Historical V1 records remain readable within permitted scope but have no V2 action buttons. Sample submissions persist locally, so completed journeys stay completed after refreshing.
