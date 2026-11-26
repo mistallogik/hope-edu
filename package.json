@@ -6,7 +6,7 @@
     "dev": "node server.mjs",
     "start": "node server.mjs",
     "test": "node --test tests/*.test.mjs",
-    "check": "node --check src/app.js && node --check src/domain.js && node --check src/store.js && node --check src/overview.js && node --check src/tables.js && node --check src/settings.js && node --check src/page-copy.js && node --check server.mjs && node --check src/access.js && node --check src/technician.js && node --check src/role-views.js"
+    "check": "node --check src/app.js && node --check src/domain.js && node --check src/store.js && node --check src/demo-data.js && node --check src/overview.js && node --check src/tables.js && node --check src/table-tabs.js && node --check src/settings.js && node --check src/page-copy.js && node --check server.mjs && node --check src/access.js && node --check src/technician.js && node --check src/role-views.js"
   },
   "devDependencies": {
     "fake-indexeddb": "^6.2.8",

@@ -14,7 +14,7 @@ export function applyWorkspaceSettings(state,draft){
 const input=(name,label,value,max=100)=>`<label class="field">${label}<input name="${name}" value="${esc(value)}" required maxlength="${max}"></label>`;
 const select=(name,label,value,options)=>`<label class="field">${label}<select name="${name}">${options.map(x=>{const [v,t]=Array.isArray(x)?x:[x,x];return `<option value="${esc(v)}" ${String(value)===String(v)?'selected':''}>${esc(t)}</option>`;}).join('')}</select></label>`;
 export function renderSettings({state,draft,tab='general',section='details',ui}){
- const navigation=`<nav class="settings-tabs" aria-label="Settings categories">${Object.entries(settingsTabs).map(([key,label])=>ui.link(label,`${ui.module}/Settings/${key}`,`settings-tab ${tab===key?'active':''}`)).join('')}</nav>`;
+ const navigation=`<nav class="settings-tabs ds-tabs" aria-label="Settings categories">${Object.entries(settingsTabs).map(([key,label])=>ui.link(label,`${ui.module}/Settings/${key}`,`settings-tab ds-tab ${tab===key?'active':''}`)).join('')}</nav>`;
  const heading=(title,description)=>`<div class="settings-section-heading"><h2>${title}</h2><p>${description}</p></div>`;
  let body='';
  if(tab==='general'){

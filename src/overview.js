@@ -1,3 +1,4 @@
+import {regions} from './demo-data.js';
 import { modules, flows, complete, stageName, severity } from './domain.js';
 
 export const moduleTitles = {
@@ -108,7 +109,7 @@ function regionPath(feature) {
 function readinessMap(model,geometry,selection,zoom,ui,revised=false) {
   const selected=model.schools.find(s=>s.id===selection);
   const pins=model.schools.map(s=>{
-    const index=Number(s.id.slice(-3))-1,[x,y]=project(schoolPositions[index%schoolPositions.length]);
+    const index=Number(s.id.slice(-3))-1,[x,y]=project(s.coordinates||schoolPositions[index%schoolPositions.length]);
     const value=model.schoolReadiness(s),tone=value===null?'unknown':value<70?'critical':value<90?'warning':'healthy';
     return `<g class="readiness-pin ${tone} ${selection===s.id?'selected':''}" data-action="map-school" data-id="${s.id}" tabindex="0" role="button" aria-label="${escapeHTML(s.name)}, ${s.state}, ${value??'no'} percent operational" transform="translate(${x},${y})"><title>${escapeHTML(s.name)} · ${s.state}</title><circle class="pin-halo" r="21"/><circle class="pin-ring" r="16"/><text text-anchor="middle" dominant-baseline="central">${value??'—'}</text>${value!==null&&value<70?'<circle class="pin-alert" cx="12" cy="-12" r="4"/>':''}</g>`;
   }).join('');
@@ -163,4 +164,18 @@ function renderSchoolOverview(model,geometry,selection,zoom,ui) {
 export function renderScopedAssetMap(state,{geometry=[],selection='',zoom=1,...ui},title='Asset readiness by location') {
  const model=overviewModel(state,'schools','All states');
  return `<div class="role-map-overview">${readinessMap(model,geometry,selection,zoom,ui,true).replace('Education across the nation',escapeHTML(title))}${priorityAssets(model,ui)}</div>`;
+}
+
+// Aggregate-only national map: never links to unassigned school or asset records.
+export function nationalAssetSummary(state){
+ return [...new Set(state.schools.map(s=>s.state))].sort().map(name=>{
+  const schools=state.schools.filter(s=>s.state===name),ids=new Set(schools.map(s=>s.id));
+  const assets=state.assets.filter(a=>ids.has(a.schoolId));
+  return {name,schools:schools.length,readiness:assets.length?Math.round(100*assets.filter(a=>a.condition==='Operational').length/assets.length):null,critical:assets.filter(a=>a.condition==='Failed').length,escalations:state.records.filter(r=>r.state===name&&r.module==='program'&&!complete(r)&&severity(r,state)==='Critical').length};
+ });
+}
+export function renderNationalMap(state,ui){
+ const rows=nationalAssetSummary(state),positions=Object.fromEntries(regions.map(([name,lon,lat])=>[name,[lon,lat]]));
+ const pins=rows.filter(r=>positions[r.name]).map(r=>{const [x,y]=project(positions[r.name]),tone=r.readiness===null?'unknown':r.readiness<70?'critical':r.readiness<90?'warning':'healthy';return `<a href="#program/State%20scorecards/${encodeURIComponent(r.name)}" aria-label="${escapeHTML(r.name)}: ${r.readiness??'No'} percent operational. View state summary"><title>${escapeHTML(r.name)} · ${r.readiness??'—'}% operational</title><g class="readiness-pin national-pin ${tone}" transform="translate(${x},${y})"><circle class="pin-halo" r="21"/><circle class="pin-ring" r="16"/><text text-anchor="middle" dominant-baseline="central">${r.readiness??'—'}</text><text class="state-pin-label" y="33" text-anchor="middle">${escapeHTML(r.name)}</text></g></a>`;}).join('');
+ return `<div class="role-map-overview national-map"><section class="ds-map-panel" aria-label="National asset readiness"><div class="ds-map-toolbar"><h2>Asset readiness by state</h2>${ui.link('Compare states','program/State scorecards','ds-button ds-button-small')}</div><div class="ds-map-stage"><svg class="readiness-map-svg" viewBox="0 0 760 580" aria-label="Nigeria state asset readiness map">${(ui.geometry||[]).map(f=>`<path class="map-country ${f.name==='Nigeria'?'nigeria':''}" d="${regionPath(f)}"/>`).join('')}<text class="country-label" x="355" y="25">NIGER</text><text class="country-label" x="630" y="455">CAMEROON</text><text class="nigeria-label" x="425" y="320">NIGERIA</text>${pins}</svg><span class="ds-map-caption">Operational assets % · select a state for its summary</span></div><div class="ds-map-foot"><span>90–100% healthy · 70–89% attention · below 70% critical</span><small>${rows.length} demo regions · illustrative locations</small></div></section><aside class="ds-priorities"><div class="ds-priority-heading"><div><h2>Regional priorities</h2><p>Failed assets and critical reporting gaps</p></div></div>${[...rows].sort((a,b)=>b.critical+b.escalations-a.critical-a.escalations).slice(0,5).map(r=>`<article class="national-state-card"><h3>${escapeHTML(r.name)}</h3><p>${r.schools} schools · ${r.readiness??'—'}% operational assets</p><p>${r.critical} critical assets · ${r.escalations} open escalations</p>${ui.link('View state summary →',`program/State scorecards/${r.name}`,'ds-link')}</article>`).join('')}</aside></div>`;
 }

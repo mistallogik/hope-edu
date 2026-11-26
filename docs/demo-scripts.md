@@ -44,3 +44,9 @@ State Managers see asset-readiness pins across their state. Facility Managers se
 - **Community:** Zainab records enrollment, attendance and progression on `V2-REF-001`; Bala validates transition. Safeguarding case details are unavailable.
 
 Historical V1 records remain readable within permitted scope but have no V2 action buttons. Sample submissions persist locally, so completed journeys stay completed after refreshing.
+
+## National map and grouped state pages
+
+As National Coordinator, select a state pin on the overview map or choose **View state summary** in Regional priorities. The summary shows operational asset percentage, school count, critical assets, open reporting escalations and assigned reviews. The three demo states are illustrative; state summaries do not unlock school or asset details.
+
+As State Manager, use **Facilities** for Schools, Assets and Energy & Infrastructure; **Programmes** for Grants & Projects, Teacher Development and assigned Training Cohorts/Community Learning; and **Reports & Reviews** for reports and reporting actions. Overview, Work Orders and Settings remain directly accessible.

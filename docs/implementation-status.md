@@ -81,3 +81,39 @@ Validation: 39 tests pass, including all six cross-role journeys at domain and U
 Restored the interactive asset-readiness map and priority assets on State Manager and Facility Manager overviews, using role-scoped data (four Kaduna schools and one assigned facility respectively). Map controls and location links preserve access boundaries. Removed the secondary person selector: each of the five roles now selects its primary sample identity. Internal reviewer identities remain in workflow data; their assigned steps stay pending in the browser demonstration. This supersedes the secondary-person behavior described above.
 
 Renamed the facility role to Facility Manager throughout the interface and policy. Saved legacy role selections migrate without losing records; saved secondary selections return to the primary person. Validation: 41 tests and syntax checks pass, including scoped map rendering, pin selection, role migration and one-person-per-role UI coverage. State Manager map visually checked in Brave.
+
+## National map and State Manager navigation — 20 November 2026
+
+Added a national asset-readiness map with one pin per represented demo state. Readiness is the percentage of operational assets; regional cards show school counts, failed assets and critical open reporting gaps. Selecting a state opens aggregate asset/reporting summaries and only reviews assigned to the National Coordinator. Operational detail permissions are unchanged.
+
+Consolidated State Manager navigation into Overview, Facilities, Work Orders, Programmes, Reports & Reviews, and Settings. Existing routes remain available through section tabs, with cohort/community tabs and routes gated by assigned duties. Existing location restrictions and workflow assignments remain in effect. The profile Settings link now consistently opens the role's home settings from any module.
+
+Validation: syntax checks and 43 tests pass, including grouped routes, active sidebar sections, duty-gated tabs, national summary links and denied operational detail access. National map and State Manager programme tabs visually reviewed in Brave. Narrow viewport visual checks were not repeated in this change.
+
+## Table view tabs — 20 November 2026
+
+Pages containing multiple table panels now show a shared tab bar and one table panel at a time. This covers national overview/reporting/state summaries, teacher development profiles, and school/facility detail pages. Single-table pages retain their existing layout. Tabs support arrow keys, Home/End, labelled panels, and remembered selection per user/page during the session. Tables stay mounted while switching, preserving sorting, pagination and row selections.
+
+Validation: 44 tests and syntax checks pass. Results Readiness switching between National reporting summary and Delivery across six areas visually verified in Brave. Existing access policies remain unchanged.
+
+## Expanded synthetic dataset — 20 November 2026
+
+An additive, idempotent migration adds coverage for all 36 states and the FCT. Fresh-demo totals: 308 schools, 2,910 assets, 906 teacher profiles, 2,717 records across six workflow areas, and 445 grants/projects. Existing saved records, user changes and messages remain intact. Totals can increase through normal demo workflows.
+
+Every region receives eight additional synthetic schools, teaching profiles, assets, twelve examples per workflow area and twelve projects. Kaduna examples explicitly populate the primary State Manager, Facility Manager, Teacher and Technician scopes. National review assignments cover all regions. Prior-stage fields, evidence and audit entries are seeded; completed repair/energy examples have operational assets. District names and map anchors are illustrative, not authoritative facility locations. No real school, teacher or learner records are imported.
+
+National reporting and map coverage now derive from the dataset. The KPI distinguishes 36 states from the additional FCT; regional priorities show the five highest exception totals. Map names are exposed on hover/focus to keep the expanded map readable.
+
+State-name reference: https://sccr.gov.ng/?p=121 (Constitution, Chapter 1, Part 1). Coverage reference: https://www.nigerianstat.gov.ng/page/about-us (36 states plus FCT).
+
+Validation: 47 tests pass, covering migration preservation/idempotence, unique IDs, record references, seeded workflow history, completed asset states and actionable data for each role. Browser verification confirmed 37 national reporting entries with working pagination through page four.
+
+## Design-system tab alignment — 20 November 2026
+
+Inspected the source Tab Menu page (`553:734`) and high-fidelity horizontal component (`3512:10071`) plus hover item (`3511:9877`) in HSRY Products Align. Unified section links, table view buttons and settings tab markup under shared `ds-tabs` / `ds-tab` styling. Matched Geist Medium 14/20, 24px gaps, 14px vertical padding, soft top/bottom dividers, strong active text and the exact downloaded blue underline asset. Removed the prior green button and green underline tab variants. Long tab bars scroll horizontally. Table keyboard behavior and per-page selection remain intact.
+
+Verified State Manager Programmes and National Coordinator State scorecards visually against the Figma component. All 47 tests and syntax checks pass. No optional icons or dropdown were enabled in this variant.
+
+## Product-green tab accent — 26 November 2026
+
+Applied the requested HOPE EDU green override to the shared tab underline and keyboard focus outline using `--align-primary-dark` (#178c4e). Section navigation, table tabs and settings tab markup all use the same shared stylesheet. Typography, spacing, dividers, active text and tab behavior remain as designed. The original blue SVG is retained only as a source reference.

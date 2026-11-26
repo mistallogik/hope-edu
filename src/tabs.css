@@ -1,0 +1,10 @@
+/* AlignUI Tab Menu Horizontal [1.1], Figma 3512:10071.
+   Shared by page navigation and in-page table views.
+   Product override: active underline and focus use HOPE EDU green. */
+.ds-tabs{display:flex;align-items:flex-start;gap:var(--align-space-6);min-width:0;overflow-x:auto;flex-wrap:nowrap;margin:0 0 24px;padding:0;border-top:1px solid var(--align-stroke-soft);border-bottom:1px solid var(--align-stroke-soft);background:var(--align-bg-white)}
+.ds-tabs>.ds-tab{position:relative;display:inline-flex;align-items:center;justify-content:center;flex:0 0 auto;gap:6px;box-sizing:border-box;min-height:48px;margin:0;padding:14px 0;border:0;border-radius:0;background:transparent;box-shadow:none;color:var(--align-text-sub);font:500 14px/20px Geist,Inter,sans-serif;letter-spacing:-.084px;font-feature-settings:'ss11' 1,'calt' 0,'liga' 0;white-space:nowrap;text-decoration:none;cursor:pointer}
+.ds-tabs>.ds-tab:hover,.ds-tabs>.ds-tab[aria-current=page],.ds-tabs>.ds-tab[aria-selected=true],.ds-tabs>.ds-tab.active{color:var(--align-text-strong)}
+.ds-tabs>.ds-tab::after{content:'';position:absolute;bottom:0;left:0;right:0;height:2px;background:var(--align-primary-dark);opacity:0}
+.ds-tabs>.ds-tab[aria-current=page]::after,.ds-tabs>.ds-tab[aria-selected=true]::after,.ds-tabs>.ds-tab.active::after{opacity:1}
+.ds-tabs>.ds-tab:focus-visible{outline:2px solid var(--align-primary-dark);outline-offset:-3px}
+.ds-tabs>.ds-tab:disabled{color:var(--align-text-soft);cursor:not-allowed}
