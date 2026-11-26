@@ -1,0 +1,70 @@
+/* ONSA reference overlays, using HOPE EDU's shared type and green tokens. */
+dialog.comm-dialog{position:fixed;inset:10px 10px 10px auto;margin:0;padding:0;border:1px solid var(--align-stroke-soft);border-radius:20px;background:#fff;color:var(--align-text-strong);font:400 14px/20px Geist,Inter,sans-serif;letter-spacing:-.006em;max-width:none;max-height:none;overflow:hidden;box-shadow:0 16px 64px #17171726}
+dialog.comm-dialog[open]{display:flex;flex-direction:column}
+dialog.messages-drawer{width:min(1040px,calc(100vw - 20px));height:calc(100dvh - 20px);animation:comm-slide-in 240ms cubic-bezier(.2,.8,.2,1)}
+dialog.messages-drawer::backdrop{background:#17171730}
+.comm-header{display:flex;align-items:center;gap:16px;padding:20px 24px;border-bottom:1px solid var(--align-stroke-soft);flex:none;min-height:88px}
+.comm-header>div:first-child,.comm-header>h2{flex:1}
+.comm-dialog .comm-header h2{font:600 20px/28px Geist,sans-serif;letter-spacing:-.4px;padding:0;margin:0}
+.comm-header p{font-size:13px;color:var(--align-text-sub);margin-top:6px}
+.comm-close{width:36px;height:36px;padding:0;border:0;background:transparent;color:var(--align-text-sub);font:400 24px/1 Geist,sans-serif;flex:none}
+.comm-dialog .ds-button{padding:8px 12px;min-height:36px}
+.comm-link{padding:6px 0;border:0;background:transparent;color:var(--align-primary-dark);font:500 13px/20px Geist,sans-serif;white-space:nowrap}
+.comm-link:hover{background:transparent;color:var(--green-dark)}
+.comm-message-body{display:grid;grid-template-columns:30% 1fr;min-height:0;flex:1}
+.comm-conversations{display:flex;flex-direction:column;min-width:0;min-height:0;border-right:1px solid var(--align-stroke-soft)}
+.comm-list-heading{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:16px 20px;border-bottom:1px solid var(--align-stroke-soft);min-height:64px}
+.comm-dialog h3{font:500 14px/22px Geist,sans-serif;letter-spacing:-.2px}
+.comm-conversation-list{overflow:auto;flex:1}
+.comm-conversation{display:flex;width:100%;align-items:flex-start;gap:10px;padding:18px 16px;text-align:left;border:0;border-bottom:1px solid var(--align-stroke-soft);border-radius:0;position:relative;background:#fff}
+.comm-conversation[aria-pressed=true]{background:var(--align-success-light,#e0f7ec)}
+.comm-avatar{width:34px;height:34px;border-radius:50%;object-fit:cover;flex:none}
+.comm-initial{display:grid;place-items:center;background:var(--align-bg-weak);color:var(--align-text-sub)}
+.comm-conversation-copy{display:flex;flex-direction:column;gap:5px;min-width:0;flex:1}
+.comm-conversation-copy strong{font-weight:500;padding-right:26px}
+.comm-conversation-copy>span{white-space:nowrap;overflow:hidden;text-overflow:ellipsis;color:var(--align-text-sub);font-size:13px}
+.comm-dialog small,.comm-conversation time{font:400 12px/18px Geist,sans-serif;color:var(--align-text-sub)}
+.comm-conversation time{position:absolute;right:16px;top:18px;font-size:10px}
+.comm-thread{display:flex;flex-direction:column;min-width:0;min-height:0}
+.comm-empty{display:flex;align-items:center;justify-content:center;flex-direction:column;text-align:center;gap:24px;flex:1;padding:24px}
+.comm-empty>img{padding:10px;box-sizing:content-box;background:var(--align-bg-weak);border-radius:50%;width:20px;height:20px}
+.comm-empty h3{font-size:18px;line-height:26px;font-weight:600}
+.comm-empty p{color:var(--align-text-sub)}
+.comm-thread-head{display:flex;align-items:center;gap:12px;padding:16px 24px;border-bottom:1px solid var(--align-stroke-soft);min-height:64px}
+.comm-dialog .comm-history{flex:1;max-height:none;overflow-y:auto;margin:0;padding:24px;display:flex;flex-direction:column;gap:16px}
+.comm-bubble{align-self:flex-start;max-width:85%;background:var(--align-bg-weak);padding:12px 16px;border-radius:12px}
+.comm-bubble.outgoing{align-self:flex-end;background:var(--align-success-light,#e0f7ec)}
+.comm-bubble p{white-space:pre-wrap;overflow-wrap:anywhere;line-height:1.6;margin-bottom:6px}
+.comm-compose{padding:16px 24px;border-top:1px solid var(--align-stroke-soft)}
+.comm-compose .field{margin:0 0 12px;font:500 13px/20px Geist,sans-serif}
+.comm-compose textarea{resize:vertical;max-height:160px;min-height:76px}
+.comm-compose-footer{display:flex;align-items:center;justify-content:space-between;gap:12px}
+.comm-mobile-back{display:none}
+dialog.notifications-popover{inset:72px 32px auto auto;width:min(540px,calc(100vw - 32px));max-height:min(580px,calc(100dvh - 88px));animation:comm-pop-in 160ms ease-out}
+dialog.notifications-popover::backdrop{background:#17171708}
+.notifications-popover .comm-header{min-height:76px;padding:20px}
+.comm-notification-tabs{display:flex;align-items:stretch;gap:20px;padding:0 20px;border-bottom:1px solid var(--align-stroke-soft);flex:none}
+.comm-notification-tabs [role=tab]{position:relative;gap:6px;padding:14px 0;color:var(--align-text-sub);font-size:14px}
+.comm-notification-tabs [aria-selected=true]{color:var(--align-primary-dark)}
+.comm-notification-tabs [aria-selected=true]::after{content:'';position:absolute;height:2px;bottom:-1px;left:0;right:0;background:var(--align-primary-dark)}
+.comm-notification-tabs>button:last-child{margin-left:auto;font-size:11px;color:var(--align-text-sub)}
+.comm-count{display:inline-flex;align-items:center;justify-content:center;min-width:18px;height:18px;border-radius:20px;background:#fb3748;color:white;padding:0 4px;font-size:10px}
+.comm-alert-list{overflow:auto;min-height:0;padding:0 8px}
+.comm-alert{display:flex;align-items:flex-start;gap:14px;padding:20px 12px;border-bottom:1px solid var(--align-stroke-soft)}
+.comm-alert:last-child{border:0}
+.comm-alert>div{min-width:0;flex:1}
+.comm-alert h3{font-size:14px;line-height:22px}
+.comm-alert p{color:var(--align-text-sub);font-size:12px;margin-top:6px}
+.comm-alert-icon{position:relative;display:grid;place-items:center;width:40px;height:40px;border-radius:50%;background:var(--align-success-light,#e0f7ec);flex:none}
+.comm-alert-icon.unread::after{content:'';position:absolute;width:6px;height:6px;border:2px solid white;border-radius:50%;right:0;top:0;background:#fb3748;box-sizing:content-box}
+.comm-alert-actions{display:flex;gap:14px;align-items:center;margin-top:16px}
+.comm-notification-footer{display:flex;align-items:center;justify-content:space-between;padding:16px 20px;border-top:1px solid var(--align-stroke-soft);gap:12px;color:var(--align-text-sub);font-size:11px;flex:none}
+.comm-no-results{padding:40px 20px;text-align:center;color:var(--align-text-sub)}
+@keyframes comm-slide-in{from{transform:translateX(36px);opacity:0}to{transform:translateX(0);opacity:1}}
+@keyframes comm-pop-in{from{transform:translateY(-8px);opacity:0}to{transform:translateY(0);opacity:1}}
+@media(prefers-reduced-motion:reduce){dialog.comm-dialog{animation:none}}
+@media(max-width:700px){dialog.messages-drawer{inset:8px;width:calc(100vw - 16px);height:calc(100dvh - 16px)}.comm-header{padding:16px;gap:8px}.comm-message-body{grid-template-columns:40% 1fr}.comm-list-heading{padding:12px}.comm-conversation{padding:16px 12px}.comm-conversation time{display:none}.comm-conversation-copy strong{padding:0}.comm-conversation .comm-avatar{display:none}.comm-list-heading .comm-link{font-size:11px}.comm-compose,.comm-thread-head{padding:16px}.comm-compose-footer small{max-width:110px}}
+@media(max-width:480px){.comm-message-body{display:block;overflow:hidden}.comm-conversations{height:100%;border:0}.comm-thread{display:none;height:100%}.has-thread .comm-conversations{display:none}.has-thread .comm-thread{display:flex}.comm-mobile-back{display:inline-flex;background:transparent;border:0;padding:4px;color:var(--align-primary-dark)}.comm-conversation .comm-avatar{display:block}.comm-conversation time{display:block}.comm-header .ds-button{font-size:12px}.comm-header p{font-size:12px}dialog.notifications-popover{inset:64px 8px auto;width:calc(100vw - 16px);max-height:calc(100dvh - 80px)}.notifications-popover .comm-header{padding:12px;gap:8px}.comm-dialog .comm-header h2{font-size:18px}.comm-notification-tabs{gap:14px;padding:0 12px}.comm-notification-tabs [role=tab]{font-size:12px}.comm-alert{gap:10px}.comm-notification-footer{padding:12px}.comm-notification-footer>span{max-width:130px}}
+/* Keep the underlying workspace crisp, as in the supplied references. */
+dialog.comm-dialog::backdrop{backdrop-filter:none}
+.comm-dialog .comm-link,.comm-dialog .comm-close,.comm-dialog .comm-conversation{box-shadow:none}

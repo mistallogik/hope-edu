@@ -1,9 +1,9 @@
 export const demoUsers=[
- {id:'national-001',name:'Abdullahi Hassan',role:'National coordinator',label:'National Coordinator',home:'program'},
- {id:'state-001',name:'Amina Yusuf',role:'State manager',label:'State Manager',home:'schools'},
- {id:'facility-001',name:'Musa Ibrahim',role:'Facility manager',label:'Facility Manager',home:'schools'},
- {id:'teacher-001',name:'Zainab Bello',role:'Teacher',label:'Teacher',home:'teachers'},
- {id:'tech-001',name:'Ibrahim Suleiman',role:'Technician',label:'Technician',home:'schools'},
+ {id:'national-001',avatar:'/public/avatars/national-001.png',name:'Abdullahi Hassan',role:'National coordinator',label:'National Coordinator',home:'program'},
+ {id:'state-001',avatar:'/public/avatars/state-001.png',name:'Amina Yusuf',role:'State manager',label:'State Manager',home:'schools'},
+ {id:'facility-001',avatar:'/public/avatars/facility-001.png',name:'Musa Ibrahim',role:'Facility manager',label:'Facility Manager',home:'schools'},
+ {id:'teacher-001',avatar:'/public/avatars/teacher-001.png',name:'Zainab Bello',role:'Teacher',label:'Teacher',home:'teachers'},
+ {id:'tech-001',avatar:'/public/avatars/tech-001.png',name:'Ibrahim Suleiman',role:'Technician',label:'Technician',home:'schools'},
 ];
 export const isTechnician=state=>state.settings.role==='Technician';
 export const activeUser=state=>allUsers.find(u=>u.id===state.settings.activeUserId&&u.role===state.settings.role)||demoUsers.find(u=>u.role===state.settings.role)||{id:'legacy-demo',name:state.settings.profileName||'Demonstration user',role:state.settings.role,label:state.settings.role,home:'schools'};

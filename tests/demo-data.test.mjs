@@ -23,3 +23,10 @@ test('all five demo roles receive enough scoped examples and actionable work',()
  const s=expandDemoData(addRoleFixtures(seed()));
  for(const u of demoUsers){s.settings.role=u.role;s.settings.activeUserId=u.id;const d=scopedData(s);assert.ok(d.records.length>=12,u.role);if(u.role==='State manager')assert.ok(d.schools.length>10);if(u.role==='Facility manager'){assert.equal(d.schools.length,1);assert.ok(d.assets.length>10);assert.ok(d.grants.length>10);}if(u.role!=='National coordinator')assert.ok(d.records.some(r=>canAct(s,r)),u.role);}
 });
+
+test('supplemental scenarios preserve saved work and remain small and idempotent',async()=>{
+ const {addTestingScenarios,sampleGuides}=await import('../src/demo-scenarios.js');const old=expandDemoData(addRoleFixtures(seed()));old.messages=[{text:'My existing message'}];const next=addTestingScenarios(old);
+ assert.equal(next.records.length-old.records.length,12);assert.equal(next.assets.length-old.assets.length,2);assert.equal(next.messages.length,11);assert.equal(sampleGuides.length,6);
+ assert.deepEqual(next.records.slice(0,old.records.length),old.records);assert.deepEqual(next.assets.slice(0,old.assets.length),old.assets);assert.equal(next.messages[0].text,'My existing message');assert.equal(addTestingScenarios(next),next);
+ for(const module of ['program','schools','teachers','energy','essence','community'])assert.equal(next.records.filter(r=>r.id.startsWith('TEST-')&&r.module===module).length,2);
+});

@@ -117,3 +117,17 @@ Verified State Manager Programmes and National Coordinator State scorecards visu
 ## Product-green tab accent — 26 November 2026
 
 Applied the requested HOPE EDU green override to the shared tab underline and keyboard focus outline using `--align-primary-dark` (#178c4e). Section navigation, table tabs and settings tab markup all use the same shared stylesheet. Typography, spacing, dividers, active text and tab behavior remain as designed. The original blue SVG is retained only as a source reference.
+
+## Supplemental testing scenarios — 26 November 2026
+
+Kept the existing national dataset and added a small, additive testing pack: twelve curated records (two in each workflow area), ten labelled local sample messages (two per primary role), two maintenance assets with service histories, and six distinct learning guides. Examples cover drafts, returned evidence, approval, follow-up and verification. No additional user access was granted. The migration runs once and preserves existing records and messages.
+
+Guides now show topic-specific exercises and matching downloadable text. Their learning-record link resolves to an authorized, active V2 learning record. Messages remain browser-local; seeded messages are explicitly labelled synthetic examples, with no live communication.
+
+Validation: 49 tests and syntax checks pass, including migration preservation, guide content, sample message visibility, draft form population and facility verification availability. No new visual layout was introduced.
+
+### Messaging and notification overlays — 26 November 2026
+
+Updated the two top-navigation overlays using the supplied ONSA screenshots as structural references. Messages use a right-side modal drawer, conversation list, empty landing state, per-person avatars, incoming/outgoing conversation history and a new-message composer. Messages remain local to this browser; contacts are the other four demo identities. Notifications use a compact top-right popup with All/Inbox/Following/Archived filters, read-all, follow/unfollow, archive/restore, chronological sorting and scoped record links. Notification preferences persist separately for each demo identity. Both overlays support Escape and backdrop dismissal, native dialog focus containment, reduced-motion settings, and narrow-screen styles.
+
+Desktop browser inspection confirmed the drawer, selected conversation/composer, Escape dismissal and notification popup. Automated integration tests cover message escaping, incoming conversations, notification filtering and per-user persistence. Mobile CSS is implemented but has not had a separate browser screenshot pass. Main page layouts are unchanged. No external messaging service is connected.

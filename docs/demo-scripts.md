@@ -50,3 +50,15 @@ Historical V1 records remain readable within permitted scope but have no V2 acti
 As National Coordinator, select a state pin on the overview map or choose **View state summary** in Regional priorities. The summary shows operational asset percentage, school count, critical assets, open reporting escalations and assigned reviews. The three demo states are illustrative; state summaries do not unlock school or asset details.
 
 As State Manager, use **Facilities** for Schools, Assets and Energy & Infrastructure; **Programmes** for Grants & Projects, Teacher Development and assigned Training Cohorts/Community Learning; and **Reports & Reviews** for reports and reporting actions. Overview, Work Orders and Settings remain directly accessible.
+
+## Small testing scenario pack
+
+Refresh to apply the supplemental data without resetting saved work. Search `TEST-` to locate curated examples:
+
+- State Manager: `TEST-PROGRAM-1` has returned evidence; `TEST-ENERGY-7` is ready for option approval.
+- Technician: `TEST-SCHOOLS-3` includes a saved diagnosis/quote draft and prior service history.
+- Facility Manager: `TEST-SCHOOLS-4` has repair evidence awaiting verification; `TEST-ENERGY-8` awaits facility acceptance.
+- Teacher: `TEST-TEACHERS-5` includes a reflection draft; Courses & Guides has six sample exercises; community examples include delivery and validation stages.
+- National Coordinator: the two new reporting examples are assigned review records.
+
+Open Messages under any role to see two labelled synthetic outgoing messages. These examples remain local and do not imply real delivery or replies.
